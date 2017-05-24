@@ -1,5 +1,6 @@
 # General
 alias die="figlet 'Goodbye!' && poweroff"
+alias atom="atom --force-device-scale-factor=1.5"
 
 # Git
 alias g="git"
@@ -19,7 +20,7 @@ alias gprom="git pull --rebase origin master"
 alias gplum="git pull upstream master"
 alias gplom="git pull origin master"
 alias gl="git log --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'"
-alias glg="git log --topo-order --graph --pretty=format=''%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n"
+alias glg="git log --topo-order --graph --pretty=format=''%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'"
 alias glog="git log --topo-order --graph --pretty=format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'"
 alias gst="git stash"
 alias gstp="git stash pop"
@@ -46,3 +47,5 @@ alias ci="composer install"
 alias pi="pip install"
 alias pf="pip freeze"
 alias pfr="pip freeze >! requirements.txt"
+alias pit="pip install --editable ."
+alias srcenv="source env/bin/activate"

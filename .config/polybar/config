@@ -1,6 +1,6 @@
 ;=====================================================
-;
 ;   To learn more about how to configure Polybar
+;
 ;   go to https://github.com/jaagr/polybar
 ;
 ;   The README contains alot of information
@@ -74,7 +74,7 @@ module-margin-right = 2
 font-0 = Input-Regular:size=18;2
 font-1 = FontAwesome:size=16;2
 
-modules-left = i3
+modules-left = i3 mpd
 modules-center = xwindow
 modules-right = volume cpu memory battery clock
 
@@ -165,16 +165,15 @@ label-visible-margin = 1
 label-visible-font = 3
 
 ws-icon-0 = 1;
-ws-icon-1 = 2;
+ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
-ws-icon-5 = 6;
+ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
 ws-icon-8 = 9;
 ws-icon-9 = 10;
-ws-icon-default = ♟
 
 [module/mpd]
 type = internal/mpd

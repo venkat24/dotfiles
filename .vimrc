@@ -22,6 +22,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'dracula/vim'
 Plug 'junegunn/goyo.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dikiaap/minimalist'
 Plug 'airblade/vim-gitgutter'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'terryma/vim-multiple-cursors'
@@ -29,6 +30,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'majutsushi/tagbar'
 Plug 'chrisbra/csv.vim'
 Plug 'raichoo/haskell-vim'
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 filetype plugin indent on
@@ -103,6 +105,14 @@ let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 set ttimeoutlen=0
 
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-o>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_exit_from_insert_mode=0
+let g:multi_cursor_exit_from_visual_mode=0
+
 function MoveToPrevTab()
   if tabpagenr('$') == 1 && winnr('$') == 1
     return
@@ -166,21 +176,34 @@ function! s:swap_down()
     exec n + 1
 endfunction
 
-func! WordProcessorMode() 
-    setlocal formatoptions=1 
-    setlocal noexpandtab 
-    map j gj 
-    map <Down> gj 
+func! WordProcessorMode()
+    setlocal formatoptions=1
+    setlocal noexpandtab
+    map j gj
+    map <Down> gj
     map k gk
     map <Up> gk
-    setlocal spell spelllang=en_us 
+    setlocal spell spelllang=en_us
     set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
     set complete+=s
     set formatprg=par
-    setlocal wrap 
-    setlocal linebreak 
-endfu 
+    setlocal wrap
+    setlocal linebreak
+endfu
 com! WP call WordProcessorMode()
+
+func! DayMode()
+    color base16-gruvbox-light-hard
+    AirlineTheme gruvbox
+    let g:airline_theme='gruvbox'
+endfu
+com! Day call DayMode()
+
+func! NightMode()
+    color dracula
+    AirlineTheme dracula
+endfu
+com! Night call NightMode()
 
 nnoremap <Leader>w :bn<CR>
 nnoremap <Leader>q :bp<CR>

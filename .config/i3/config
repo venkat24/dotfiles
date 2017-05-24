@@ -32,9 +32,11 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.5
+bindsym $mod+t exec thunar
 
 # kill focused window
 bindsym $mod+Shift+w kill
+bindsym $mod+Control+Shift+w kill -9
 
 # start dmenu (a program launcher)
 bindsym $mod+space exec dmenu_run
