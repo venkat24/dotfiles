@@ -30,6 +30,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'majutsushi/tagbar'
 Plug 'chrisbra/csv.vim'
 Plug 'raichoo/haskell-vim'
+Plug 'mxw/vim-jsx'
 Plug 'wakatime/vim-wakatime'
 call plug#end()
 
@@ -37,9 +38,9 @@ filetype plugin indent on
 syntax enable
 set clipboard=unnamedplus
 
-color dracula
+color gruvbox
+"color dracula
 "color base16-google-dark
-"color gruvbox
 "color base16-chalk
 
 let g:gruvbox_contrast_dark = 'hard'
@@ -51,10 +52,10 @@ set t_Co=256
 set encoding=utf-8
 set termguicolors
 
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+"set tabstop=4 softtabstop=0 expandtab shiftwidth=4
+set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
+set listchars=tab:>-,trail:~,extends:>,precedes:<
 set smarttab
-set expandtab
 set title
 set autoindent
 set smartindent
@@ -66,12 +67,15 @@ set encoding=utf8
 set wildmenu
 set number
 set showmatch
-set cursorline
+
+set list
+
+"set cursorline
 
 set splitbelow
 set splitright
 
-highlight CursorLine cterm=bold ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+"highlight CursorLine cterm=bold ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set nobackup
 set nowb
 set noswapfile
@@ -93,6 +97,8 @@ nnoremap <A-,> :call MoveToPrevTab()<CR>
 :command W w
 :command Q q
 
+:command Set set
+
 nnoremap <CR> :noh<CR><CR>
 
 map <c-n> :NERDTreeToggle<CR>
@@ -100,7 +106,7 @@ map <c-n> :NERDTreeToggle<CR>
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='dracula'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 set ttimeoutlen=0
@@ -200,10 +206,15 @@ endfu
 com! Day call DayMode()
 
 func! NightMode()
-    color dracula
+    color gruvbox
     AirlineTheme dracula
 endfu
 com! Night call NightMode()
+
+func! PlaySound()
+  silent! exec '!play -q ~/.vim/type/sound1.aiff &'
+endfunction
+"autocmd CursorMovedI * call PlaySound()
 
 nnoremap <Leader>w :bn<CR>
 nnoremap <Leader>q :bp<CR>

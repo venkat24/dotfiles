@@ -39,6 +39,7 @@ bindsym $mod+Shift+Right move right
 
 # splits
 bindsym $mod+v split v
+bindsym $mod+h split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -104,7 +105,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Set Wallpaper
-exec_always feh --bg-scale ~/Desktop/Wallpapers/liverpool.png
+exec_always feh --bg-scale ~/Desktop/Wallpapers/liverpool2.png
 exec_always compton
 exec polybar example
 
@@ -144,12 +145,12 @@ gaps inner 20
 # Borders
 for_window [class="^.*"] border pixel 4
 new_window pixel 5
-smart_borders on
+# smart_borders on
 
-client.focused          #FFFFFF #FFFFFF #dddddd
-client.focused_inactive #333333 #333333 #888888
-client.unfocused        #333333 #333333 #888888
-client.urgent           #900000 #900000 #ffffff
+client.focused          #3c3836 #3c3836 #504945 #504945
+client.focused_inactive #333333 #333333 #555555 #555555
+client.unfocused        #333333 #333333 #555555 #555555
+client.urgent           #ff5555 #ff5555 #ff5555 #ff5555
 
 # Replaced by polybar
 #bar {

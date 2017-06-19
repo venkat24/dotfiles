@@ -32,7 +32,7 @@ color14 = #3971ed
 color7  = #c5c8c6
 color15 = #ffffff
 
-background = #1e1f29
+background = #282828
 foreground = #f2f2f2
 overline-color = #bc92f8
 underline-color = #bc92f8
@@ -134,24 +134,24 @@ index-sort = true
 wrapping-scroll = false
 
 label-mode-padding = 2
-label-mode-foreground = #dd222222
+label-mode-foreground = #dd2222
 label-mode-background = #ff5555
 label-focused = %icon%
 label-focused-padding = 2
 label-focused-margin = 1
 label-focused-font = 3
 label-focused-foreground = #fff
-label-focused-background = #2fbbf2
-label-focused-overline = #148ebe
-label-focused-underline = #148ebe
+label-focused-background = #b8bb26
+label-focused-overline = #98971a
+label-focused-underline = #98971a
 
 label-unfocused = %icon%
 label-unfocused-padding = 2
 label-unfocused-margin = 1
-label-unfocused-background = #eeeeee
+label-unfocused-background = #ebdbb2
 label-unfocused-foreground = #dd222222
-label-unfocused-overline = #c5c5c5
-label-unfocused-underline = #c5c5c5
+label-unfocused-overline = #d5c4a1
+label-unfocused-underline = #d5c4a1
 label-unfocused-font = 3
 
 label-urgent = %icon%
@@ -215,10 +215,10 @@ type = internal/cpu
 interval = 0.5
 
 format = <label> <ramp-coreload>
-format-background = #66cc99
+format-background = #689d6a
 format-foreground = #2a5c45
-format-underline = #60eaa5
-format-overline = #60eaa5
+format-underline = #8ec07c
+format-overline = #8ec07c
 format-padding = 2
 
 label = 
@@ -254,10 +254,10 @@ type = internal/memory
 
 format = <label> <bar-used>
 format-padding = 2
-format-background = #cb66cc
+format-background = #b16286
 format-foreground = #ffe3ff
-format-underline = #e58de6
-format-overline = #e58de6
+format-underline = #d3869b
+format-overline = #d3869b
 
 label = 
 label-font = 3
@@ -278,10 +278,10 @@ type = internal/date
 date = %%{T3} %H:%M%%{T-}
 
 format-padding = 1
-format-background = #ff4279
-format-foreground = #ffcddc
-format-underline = #ff63a5
-format-overline = #ff63a5
+format-background = #458588
+format-foreground = #cdcddc
+format-underline = #83a698
+format-overline = #83a698
 
 [module/wlan]
 type = internal/network

@@ -4,37 +4,54 @@ alias atom="atom --force-device-scale-factor=1.5"
 
 # Git
 alias g="git"
+
 alias gs="git status"
+
 alias ga"git add"
 alias gap="git add -p"
 alias gaa="git add . --all"
+
 alias gc="git commit"
 alias gca="git commit --amend"
 alias gcm="git commit -m "
+
 alias gp="git push"
+alias gpo="git push origin"
+alias gpu="git push upstream"
 alias gpom="git push origin master"
 alias gpum="git push upstream master"
+
 alias gpl="git pull"
-alias gprom="git pull --rebase origin master"
-alias gprum="git pull --rebase upstream master"
+alias gplo="git pull origin"
+alias gplu="git pull upstream"
 alias gplom="git pull origin master"
 alias gplum="git pull upstream master"
-alias gl="git log --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%C(red)%d%C(reset)'"
-alias glg="git log --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'"
-alias glog="git log --topo-order --graph --pretty=format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'"
+alias gprom="git pull --rebase origin master"
+alias gprum="git pull --rebase upstream master"
+
+alias gl="git log --all --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%C(red)%d%C(reset)'"
+alias glg="git log --all --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'"
+alias glog="git log --all --topo-order --graph --pretty=format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'"
+
 alias gst="git stash"
 alias gstp="git stash pop"
+
 alias gch="git checkout"
 alias gchb="git checkout -b"
+
 alias gb="git branch"
+
 alias gr="git remote"
 alias gra="git remote add"
+
 alias grb="git rebase"
 alias grbi="git rebase --interactive"
 
 # Temporary
 alias rrff="cd /home/venkat/bin/rrff17/"
 alias code="cd /home/venkat/bin/codeworld/"
+alias sim="cd /home/venkat/bin/simulator"
+alias web="cd /home/venkat/bin/web"
 
 # PHP and Laravel
 alias pa="php artisan"
@@ -49,3 +66,7 @@ alias pf="pip freeze"
 alias pfr="pip freeze >! requirements.txt"
 alias pit="pip install --editable ."
 alias srcenv="source env/bin/activate"
+
+# Node
+#alias npm="nvm exec 8.0.0 npm"
+#alias node="nvm exec 8.0.0"
