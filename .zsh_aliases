@@ -1,9 +1,13 @@
 # General
 alias die="figlet 'Goodbye!' && poweroff"
 alias atom="atom --force-device-scale-factor=1.5"
+alias emacsc="emacsclient -c"
 
 # Git
 alias g="git"
+
+alias gcl="git clone"
+alias gclr="git clone --recursive"
 
 alias gs="git status"
 
@@ -29,9 +33,12 @@ alias gplum="git pull upstream master"
 alias gprom="git pull --rebase origin master"
 alias gprum="git pull --rebase upstream master"
 
-alias gl="git log --all --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%C(red)%d%C(reset)'"
-alias glg="git log --all --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'"
-alias glog="git log --all --topo-order --graph --pretty=format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'"
+alias gum="gprum && gpom"
+alias gumf="gprum && gpom -f"
+
+alias gl="git log --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%C(red)%d%C(reset)'"
+alias glg="git log --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'"
+alias glog="git log --topo-order --graph --pretty=format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'"
 
 alias gst="git stash"
 alias gstp="git stash pop"
@@ -51,6 +58,7 @@ alias grbi="git rebase --interactive"
 alias rrff="cd /home/venkat/bin/rrff17/"
 alias code="cd /home/venkat/bin/codeworld/"
 alias sim="cd /home/venkat/bin/simulator"
+alias sublsim="subl /home/venkat/bin/simulator/build/simulator.sublime-project"
 alias web="cd /home/venkat/bin/web"
 
 # PHP and Laravel

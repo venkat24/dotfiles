@@ -10,7 +10,6 @@ Plug 'ervandew/supertab'
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdcommenter'
@@ -21,10 +20,10 @@ Plug 'junegunn/limelight.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'dracula/vim'
 Plug 'junegunn/goyo.vim'
+Plug 'tpope/vim-sleuth'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dikiaap/minimalist'
 Plug 'airblade/vim-gitgutter'
-Plug 'gosukiwi/vim-atom-dark'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'majutsushi/tagbar'
@@ -43,7 +42,7 @@ color gruvbox
 "color base16-google-dark
 "color base16-chalk
 
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_italic = 1
 
 let base16colorspace=256
@@ -53,9 +52,10 @@ set encoding=utf-8
 set termguicolors
 
 "set tabstop=4 softtabstop=0 expandtab shiftwidth=4
-set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
-set listchars=tab:>-,trail:~,extends:>,precedes:<
-set smarttab
+"set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
+set tabstop=4 shiftwidth=4
+set listchars=tab:➢\ ,trail:~,extends:>,precedes:<
+"set smarttab
 set title
 set autoindent
 set smartindent
@@ -74,7 +74,7 @@ set list
 
 set splitbelow
 set splitright
-
+"
 "highlight CursorLine cterm=bold ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set nobackup
 set nowb
@@ -83,6 +83,8 @@ set noswapfile
 let mapleader = "\<Space>"
 
 cmap w!! w !sudo tee %
+
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 noremap <silent> <C-k> :call <SID>swap_up()<CR>
 noremap <silent> <C-j> :call <SID>swap_down()<CR>
@@ -101,7 +103,7 @@ nnoremap <A-,> :call MoveToPrevTab()<CR>
 
 nnoremap <CR> :noh<CR><CR>
 
-map <c-n> :NERDTreeToggle<CR>
+map <c-o> :NERDTreeToggle<CR>
 
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
@@ -119,43 +121,7 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_exit_from_insert_mode=0
 let g:multi_cursor_exit_from_visual_mode=0
 
-function MoveToPrevTab()
-  if tabpagenr('$') == 1 && winnr('$') == 1
-    return
-  endif
-  let l:tab_nr = tabpagenr('$')
-  let l:cur_buf = bufnr('%')
-  if tabpagenr() != 1
-    close!
-    if l:tab_nr == tabpagenr('$')
-      tabprev
-    endif
-    sp
-  else
-    close!
-    exe "0tabnew"
-  endif
-  exe "b".l:cur_buf
-endfunc
-
-function MoveToNextTab()
-  if tabpagenr('$') == 1 && winnr('$') == 1
-    return
-  endif
-  let l:tab_nr = tabpagenr('$')
-  let l:cur_buf = bufnr('%')
-  if tabpagenr() < tab_nr
-    close!
-    if l:tab_nr == tabpagenr('$')
-      tabnext
-    endif
-    sp
-  else
-    close!
-    tabnew
-  endif
-  exe "b".l:cur_buf
-endfunc
+map <leader>e :bp<bar>sp<bar>bn<bar>bd<CR>.
 
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
@@ -207,7 +173,7 @@ com! Day call DayMode()
 
 func! NightMode()
     color gruvbox
-    AirlineTheme dracula
+    AirlineTheme gruvbox
 endfu
 com! Night call NightMode()
 
