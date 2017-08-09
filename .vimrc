@@ -6,6 +6,7 @@ autocmd VimEnter * echo "Welcome, Venkat!"
 call plug#begin('~/.vim/plugged')
 Plug 'mattn/emmet-vim', { 'for': ['php','html'] }
 Plug 'jiangmiao/auto-pairs'
+Plug 'haya14busa/vim-auto-programming'
 Plug 'ervandew/supertab'
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
@@ -33,14 +34,13 @@ Plug 'mxw/vim-jsx'
 Plug 'wakatime/vim-wakatime'
 call plug#end()
 
+set completefunc=autoprogramming#complete
+
 filetype plugin indent on
 syntax enable
 set clipboard=unnamedplus
 
 color gruvbox
-"color dracula
-"color base16-google-dark
-"color base16-chalk
 
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_italic = 1
@@ -180,7 +180,7 @@ com! Night call NightMode()
 func! PlaySound()
   silent! exec '!play -q ~/.vim/type/sound1.aiff &'
 endfunction
-"autocmd CursorMovedI * call PlaySound()
+autocmd CursorMovedI * call PlaySound()
 
 nnoremap <Leader>w :bn<CR>
 nnoremap <Leader>q :bp<CR>
