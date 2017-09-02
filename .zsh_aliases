@@ -2,6 +2,20 @@
 alias die="figlet 'Goodbye!' && poweroff"
 alias atom="atom --force-device-scale-factor=1.5"
 alias emacsc="emacsclient -c"
+alias trx="tar xvf"
+alias sonic="cd ~/bin/NITT-SonicWall-Login/ && python SonicWall_Login.py"
+alias fucking="sudo"
+
+# Locations
+alias rrff="cd $HOME/bin/rrff17/"
+alias api="cd $HOME/bin/FestAPI"
+alias admin="cd $HOME/bin/FestAdmin"
+alias code="cd $HOME/bin/codeworld/"
+alias sim="cd $HOME/bin/simulator"
+alias web="cd $HOME/bin/web"
+alias acads="cd $HOME/Documents/Sem\ 5/"
+alias doc="cd $HOME/Documents"
+alias down="cd $HOME/Downloads"
 
 # Git
 alias g="git"
@@ -20,8 +34,8 @@ alias gca="git commit --amend"
 alias gcm="git commit -m "
 
 alias gp="git push"
-alias gpo="git push origin"
-alias gpu="git push upstream"
+alias gpo="git push origin (git branch | grep \* | cut -d ' ' -f2)"
+alias gpu="git push upstream (git branch | grep \* | cut -d ' ' -f2)"
 alias gpom="git push origin master"
 alias gpum="git push upstream master"
 
@@ -54,12 +68,8 @@ alias gra="git remote add"
 alias grb="git rebase"
 alias grbi="git rebase --interactive"
 
-# Temporary
-alias rrff="cd /home/venkat/bin/rrff17/"
-alias code="cd /home/venkat/bin/codeworld/"
-alias sim="cd /home/venkat/bin/simulator"
-alias sublsim="subl /home/venkat/bin/simulator/build/simulator.sublime-project"
-alias web="cd /home/venkat/bin/web"
+# Docker
+alias dk="docker kill `docker ps | awk '{print $1}' | tail -n +2`"
 
 # PHP and Laravel
 alias pa="php artisan"

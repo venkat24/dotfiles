@@ -39,6 +39,7 @@ set completefunc=autoprogramming#complete
 filetype plugin indent on
 syntax enable
 set clipboard=unnamedplus
+set termguicolors
 
 color gruvbox
 
@@ -49,7 +50,6 @@ let base16colorspace=256
 set background=dark
 set t_Co=256
 set encoding=utf-8
-set termguicolors
 
 "set tabstop=4 softtabstop=0 expandtab shiftwidth=4
 "set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
@@ -156,7 +156,6 @@ func! WordProcessorMode()
     map k gk
     map <Up> gk
     setlocal spell spelllang=en_us
-    set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
     set complete+=s
     set formatprg=par
     setlocal wrap
@@ -180,7 +179,7 @@ com! Night call NightMode()
 func! PlaySound()
   silent! exec '!play -q ~/.vim/type/sound1.aiff &'
 endfunction
-autocmd CursorMovedI * call PlaySound()
+"autocmd CursorMovedI * call PlaySound()
 
 nnoremap <Leader>w :bn<CR>
 nnoremap <Leader>q :bp<CR>

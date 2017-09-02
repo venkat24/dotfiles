@@ -12,6 +12,7 @@ bindsym $mod+d exec gnome-terminal --working-directory "/home/venkat/Documents/"
 bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.5
 bindsym $mod+t exec thunar
 bindsym $mod+b exec subl
+bindsym $mod+c exec vscode
 bindsym $mod+space exec dmenu_run
 
 # kill focused window
