@@ -4,34 +4,45 @@ filetype off
 autocmd VimEnter * echo "Welcome, Venkat!"
 
 call plug#begin('~/.vim/plugged')
-Plug 'mattn/emmet-vim', { 'for': ['php','html'] }
 Plug 'jiangmiao/auto-pairs'
-Plug 'haya14busa/vim-auto-programming'
 Plug 'ervandew/supertab'
 Plug 'morhetz/gruvbox'
-Plug 'chriskempson/base16-vim'
-Plug 'dhruvasagar/vim-table-mode'
+Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdcommenter'
+Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'yuttie/comfortable-motion.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'dracula/vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-sleuth'
+Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'majutsushi/tagbar'
-Plug 'chrisbra/csv.vim'
-Plug 'raichoo/haskell-vim'
-Plug 'mxw/vim-jsx'
-Plug 'wakatime/vim-wakatime'
+"Plug 'Rip-Rip/clang_complete'
+"Plug 'sjl/gundo.vim'
+"Plug 'vim-scripts/DoxygenToolkit.vim'
+"Plug 'hail2u/vim-css3-syntax'
+"Plug 'SirVer/ultisnips'
+"Plug 'chrisbra/csv.vim'
+"Plug 'mattn/emmet-vim', { 'for': ['php','html'] }
+"Plug 'scrooloose/syntastic'
+"Plug 'tomlion/vim-solidity'
+"Plug 'chriskempson/base16-vim'
+"Plug 'dhruvasagar/vim-table-mode'
+"Plug 'raichoo/haskell-vim'
+"Plug 'mxw/vim-jsx'
+"Plug 'wakatime/vim-wakatime'
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
 call plug#end()
 
 set completefunc=autoprogramming#complete
@@ -45,6 +56,8 @@ color gruvbox
 
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_italic = 1
+
+let g:deoplete#enable_at_startup = 0
 
 let base16colorspace=256
 set background=dark
@@ -86,13 +99,18 @@ cmap w!! w !sudo tee %
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-noremap <silent> <C-k> :call <SID>swap_up()<CR>
-noremap <silent> <C-j> :call <SID>swap_down()<CR>
+"noremap <silent> <C-k> :call <SID>swap_up()<CR>
+"noremap <silent> <C-j> :call <SID>swap_down()<CR>
 noremap <silent> <C-up> :call <SID>swap_up()<CR>
 noremap <silent> <C-down> :call <SID>swap_down()<CR>
 
+vmap sb "zdi<b><C-R>z</b><Esc>
+vmap st "zdi<?= <C-R>z ?><Esc>
+
 nnoremap <A-.> :call MoveToNextTab()<CR>
 nnoremap <A-,> :call MoveToPrevTab()<CR>
+
+noremap % v%
 
 :command WQ wq
 :command Wq wq
@@ -122,6 +140,44 @@ let g:multi_cursor_exit_from_insert_mode=0
 let g:multi_cursor_exit_from_visual_mode=0
 
 map <leader>e :bp<bar>sp<bar>bn<bar>bd<CR>.
+
+let g:airline_left_sep=""
+let g:airline_left_alt_sep=""
+let g:airline_right_sep=""
+let g:airline_right_alt_sep=""
+if !exists('g:airline_symbols')
+    " Symbols for Unicode terminals
+    if &encoding==?'utf-8'
+        let g:airline_symbols= {
+                    \ 'paste': 'PASTE',
+                    \ 'spell': 'SPELL',
+                    \ 'readonly': "\u229D",
+                    \ 'whitespace': "\u2632",
+                    \ 'linenr': "\u2630",
+                    \ 'maxlinenr': "\u33D1",
+                    \ 'branch': "\u16A0",
+                    \ 'notexists': "\u0246",
+                    \ 'modified': '+',
+                    \ 'space': ' ',
+                    \ 'crypt': "\xf0\x9f\x94\x92",
+                    \}
+    else
+        " Symbols for ASCII terminals
+        let g:airline_symbols={
+                    \ 'paste': 'PASTE',
+                    \ 'spell': 'SPELL',
+                    \ 'readonly': 'RO',
+                    \ 'whitespace': '!',
+                    \ 'linenr': 'ln',
+                    \ 'maxlinenr': ':',
+                    \ 'branch': '',
+                    \ 'notexists': '?',
+                    \ 'modified': '+',
+                    \ 'space': ' ',
+                    \ 'crypt': 'cr',
+                    \ }
+    endif
+endif
 
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
@@ -163,6 +219,19 @@ func! WordProcessorMode()
 endfu
 com! WP call WordProcessorMode()
 
+func! DistractionFreeModeEnable()
+    WP
+    Goyo
+    Limelight
+endfu
+com! DF call DistractionFreeModeEnable()
+
+func! DistractionFreeModeDisable()
+    Goyo
+    Limelight!
+endfu
+com! DM call DistractionFreeModeDisable()
+
 func! DayMode()
     color base16-gruvbox-light-hard
     AirlineTheme gruvbox
@@ -177,9 +246,28 @@ endfu
 com! Night call NightMode()
 
 func! PlaySound()
-  silent! exec '!play -q ~/.vim/type/sound1.aiff &'
-endfunction
-"autocmd CursorMovedI * call PlaySound()
+    silent! exec '!mpv --no-terminal ~/.vim/type/sound1.aiff &'
+endfu
+
+func! EnableSound()
+    autocmd CursorMovedI * call PlaySound()
+endfu
+com! ClickOn call EnableSound()
+
+func! DisableSound()
+    autocmd! CursorMovedI
+endfu
+com! ClickOff call DisableSound()
+
+func! Check()
+    normal 0lvr€ýcâœ”€ýc0
+endfu
+nnoremap <Leader>a :call Check()<CR>
+
+func! UnCheck()
+    normal 0€krr 0
+endfu
+nnoremap <Leader>s :call UnCheck()<CR>
 
 nnoremap <Leader>w :bn<CR>
 nnoremap <Leader>q :bp<CR>

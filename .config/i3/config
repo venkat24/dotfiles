@@ -2,21 +2,23 @@
 
 # base and fonts
 set $mod Mod1
-font pango:PragmataPro 8
+font pango:Iosevka Term Slab 8
 floating_modifier $mod
 
 # quick start applications
-bindsym $mod+Return exec gnome-terminal
-bindsym $mod+i exec gnome-terminal --working-directory "/home/venkat/bin/scraps" -x "vim"
-bindsym $mod+d exec gnome-terminal --working-directory "/home/venkat/Documents/" -x "vim"
+bindsym $mod+Return exec termite
 bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.5
+bindsym $mod+c exec code --force-device-scale-factor=1.5
 bindsym $mod+t exec thunar
-bindsym $mod+b exec subl
-bindsym $mod+c exec vscode
+bindsym $mod+b exec subl3
+bindsym $mod+y exec okular
 bindsym $mod+space exec dmenu_run
 
 # kill focused window
 bindsym $mod+Shift+w kill
+
+# lock i3
+bindsym $mod+Shift+x exec lock
 
 # change focus
 bindsym $mod+j focus left
@@ -75,6 +77,7 @@ bindsym $mod+0 workspace 10
 # move between adjacent workspaces
 bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
+bindsym $mod+Tab workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -96,8 +99,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec xbacklight -inc 7
+bindsym XF86MonBrightnessDown exec xbacklight -dec 7
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -141,7 +144,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Gaps
-gaps inner 20
+gaps inner 0
 gaps outer 0
 
 bindsym $mod+o         gaps inner current minus 5

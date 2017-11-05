@@ -71,12 +71,12 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 2
 
-font-0 = Input-Regular:size=18;2
+font-0 = Iosevka:size=18;2
 font-1 = FontAwesome:size=16;2
 
-modules-left = i3 mpd
-modules-center = xwindow
-modules-right = volume cpu memory battery clock
+modules-left = i3 mpd xwindow
+; modules-center =
+modules-right = xbacklight volume cpu battery power clock
 
 tray-position = right
 tray-transparent = false
@@ -95,6 +95,17 @@ tray-background = #1e1f29
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
+
+[module/power]
+type = custom/script
+exec = power_consumption
+format = <label>
+format-padding = 1
+format-background = #b16286
+format-foreground = #ffe3ff
+format-underline = #d3869b
+format-overline = #d3869b
+label = ⚡ %output%
 
 [module/xwindow]
 type = internal/xwindow
@@ -191,11 +202,12 @@ label-song-ellipsis = true
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
-label = BL
+format = <bar>
+;format = <label> <bar>
+;label = BL
 
 bar-width = 10
-bar-indicator = |
+bar-indicator = 
 bar-indicator-foreground = #ff
 bar-indicator-font = 2
 bar-fill = ─
@@ -328,7 +340,7 @@ interval = 5
 date =
 date-alt = " %Y-%m-%d"
 
-time = %H:%M
+time = %I:%M %p
 time-alt = %H:%M:%S
 
 format-prefix = 
@@ -340,13 +352,15 @@ label = %date% %time%
 [module/volume]
 type = internal/volume
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+;format-volume = <label-volume> <bar-volume>
+format-volume = <bar-volume>
+;label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+;format-muted-prefix =
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = 
+label-muted-foreground = #FF5555
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -357,7 +371,7 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
