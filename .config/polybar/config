@@ -71,12 +71,12 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 2
 
-font-0 = Iosevka:size=18;2
-font-1 = FontAwesome:size=16;2
+font-0 = "Iosevka:size=18;2"
+font-1 = "FontAwesome:size=20;2"
 
 modules-left = i3 mpd xwindow
 ; modules-center =
-modules-right = xbacklight volume cpu battery power clock
+modules-right = xbacklight volume bitcoin cpu battery power clock
 
 tray-position = right
 tray-transparent = false
@@ -99,6 +99,7 @@ tray-background = #1e1f29
 [module/power]
 type = custom/script
 exec = power_consumption
+interval = 60
 format = <label>
 format-padding = 1
 format-background = #b16286
@@ -106,6 +107,17 @@ format-foreground = #ffe3ff
 format-underline = #d3869b
 format-overline = #d3869b
 label = ⚡ %output%
+
+[module/bitcoin]
+type = custom/script
+exec = bitcoin
+format = <label>
+format-padding = 1
+format-background = #fe8019
+format-foreground = #f9f5d7
+format-underline = #ffb06f
+format-overline = #ffb06f
+label =  %output%
 
 [module/xwindow]
 type = internal/xwindow

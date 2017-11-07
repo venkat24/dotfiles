@@ -1,0 +1,19 @@
+#!/usr/bin/python
+
+from decimal import Decimal, ROUND_DOWN
+
+out_str = ""
+charging_status = ""
+
+with open('/sys/class/power_supply/BAT0/status') as charge_check_file:
+    charging_status = charge_check_file.readline().strip()
+
+if charging_status == 'Discharging' or charging_status == 'Unknown':
+    with open('/sys/class/power_supply/BAT0/current_now','r') as file:
+        out_str = str(Decimal(int(file.readline().strip())/100000).quantize(Decimal('0.01'), rounding=ROUND_DOWN))+" W"
+elif charging_status == 'Charging' or charging_status == 'Full':
+    out_str = ""
+else:
+    out_str = charging_status
+
+print(out_str)

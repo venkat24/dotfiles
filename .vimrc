@@ -81,7 +81,7 @@ set wildmenu
 set number
 set showmatch
 
-set list
+"set list
 
 "set cursorline
 
