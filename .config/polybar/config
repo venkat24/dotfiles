@@ -73,17 +73,18 @@ module-margin-right = 2
 
 font-0 = "Iosevka:size=18;2"
 font-1 = "FontAwesome:size=20;2"
+font-2 = "Ubuntu:size=18;2"
 
 modules-left = i3 mpd xwindow
 ; modules-center =
-modules-right = xbacklight volume bitcoin cpu battery power clock
+modules-right = xbacklight volume aux bitcoin cpu battery power clock
 
 tray-position = right
 tray-transparent = false
 tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 0
-tray-background = #1e1f29
+tray-background = #282828
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -99,18 +100,30 @@ tray-background = #1e1f29
 [module/power]
 type = custom/script
 exec = power_consumption
-interval = 60
 format = <label>
 format-padding = 1
 format-background = #b16286
 format-foreground = #ffe3ff
 format-underline = #d3869b
 format-overline = #d3869b
-label = ⚡ %output%
+label =  %output%
+
+[module/aux]
+type = custom/script
+exec = aux
+interval = 30
+format = <label>
+format-padding = 1
+format-background = #CC241D
+format-foreground = #f9f5d7
+format-underline = #FB4934
+format-overline = #FB4934
+label = %output%
 
 [module/bitcoin]
 type = custom/script
 exec = bitcoin
+interval = 15
 format = <label>
 format-padding = 1
 format-background = #fe8019
@@ -522,4 +535,4 @@ label-open = Apps
 label-close = x
 label-separator = |
 
-;vim:ft=dosini
+# vim: ft=dosini cms=#%s

@@ -1,0 +1,4 @@
+#!/usr/bin/python
+from datetime import date
+gmat = date(2018, 1, 5)
+print(" GMAT - {} days".format((gmat - gmat.today()).days))

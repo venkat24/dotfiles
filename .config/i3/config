@@ -109,7 +109,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Set Wallpaper
-exec_always feh --bg-scale ~/Desktop/Wallpapers/liverpool2.png
+exec_always feh --bg-scale ~/Desktop/Wallpapers/metallica.jpg
 exec_always compton
 exec polybar example
 

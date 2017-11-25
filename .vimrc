@@ -25,7 +25,10 @@ Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'majutsushi/tagbar'
+Plug 'justinmk/vim-sneak'
+Plug 'kien/rainbow_parentheses.vim'
 "Plug 'Rip-Rip/clang_complete'
 "Plug 'sjl/gundo.vim'
 "Plug 'vim-scripts/DoxygenToolkit.vim'
@@ -36,7 +39,6 @@ Plug 'majutsushi/tagbar'
 "Plug 'scrooloose/syntastic'
 "Plug 'tomlion/vim-solidity'
 "Plug 'chriskempson/base16-vim'
-"Plug 'dhruvasagar/vim-table-mode'
 "Plug 'raichoo/haskell-vim'
 "Plug 'mxw/vim-jsx'
 "Plug 'wakatime/vim-wakatime'
@@ -98,6 +100,8 @@ let mapleader = "\<Space>"
 cmap w!! w !sudo tee %
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+let g:table_mode_corner='|'
 
 "noremap <silent> <C-k> :call <SID>swap_up()<CR>
 "noremap <silent> <C-j> :call <SID>swap_down()<CR>

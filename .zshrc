@@ -15,6 +15,7 @@ export PAGER='less'
 export GDK_SCALE=1.5
 
 export PATH=$HOME/bin/scripts:$PATH
+export PATH=$HOME/bin/http-c:$PATH
 export BOOST_PATH=$HOME/utils/boost
 export LD_LIBRARY_PATH=$HOME/bin/codecharacter-simulator/simulator/lib
 
