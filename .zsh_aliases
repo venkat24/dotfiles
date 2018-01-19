@@ -28,6 +28,7 @@ alias admin="cd $HOME/bin/FestAdmin"
 alias code="cd $HOME/bin/codeworld"
 alias sim="cd $HOME/bin/codecharacter-simulator"
 alias web="cd $HOME/bin/codecharacter-web"
+alias ren="cd $HOME/bin/codecharacter-renderer"
 alias acads="cd $HOME/Documents/Sem\ 5/"
 alias doc="cd $HOME/Documents"
 alias down="cd $HOME/Downloads"
@@ -39,14 +40,19 @@ alias gcl="git clone"
 alias gclr="git clone --recursive"
 
 alias gs="git status"
+alias gdiff="git diff"
 
-alias ga"git add"
+alias ga="git add"
 alias gap="git add -p"
 alias gaa="git add . --all"
 
 alias gc="git commit"
 alias gca="git commit --amend"
+alias gcan="git commit --amend --no-edit"
 alias gcm="git commit -m "
+
+alias grs="git reset "
+alias grsh="git reset --hard "
 
 alias gp="git push"
 alias gpo="git push origin HEAD"
@@ -55,19 +61,23 @@ alias gpom="git push origin master"
 alias gpum="git push upstream master"
 
 alias gpl="git pull"
-alias gplo="git pull origin"
-alias gplu="git pull upstream"
-alias gplom="git pull origin master"
-alias gplum="git pull upstream master"
-alias gprom="git pull --rebase origin master"
-alias gprum="git pull --rebase upstream master"
+alias gplo="git pull origin "
+alias gplu="git pull upstream "
 
 alias gum="gprum && gpom"
 alias gumf="gprum && gpom -f"
 
-alias gl="git log --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%C(red)%d%C(reset)'"
-alias glg="git log --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'"
-alias glog="git log --topo-order --graph --pretty=format:'%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'"
+alias gshow="git show"
+alias gl="git log --topo-order --graph \
+  --pretty=format:'%C(green)%h%C(reset) %s%C(red)%d%C(reset)'"
+alias glg="git log --topo-order --graph \
+  --pretty=format:'%C(green)%h%C(reset) \
+  %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'"
+alias glog="git log --topo-order --graph \
+  --pretty=format:'%C(bold)Commit:%C(reset) \
+  %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) \
+  %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   \
+  %C(blue)%ai (%ar)%C(reset)%n%+B'"
 
 alias gst="git stash"
 alias gstp="git stash pop"
@@ -76,12 +86,16 @@ alias gch="git checkout"
 alias gchb="git checkout -b"
 
 alias gb="git branch"
+alias gcherry="git cherry-pick"
 
 alias gr="git remote"
 alias gra="git remote add"
 
 alias grb="git rebase"
 alias grbi="git rebase --interactive"
+alias grbc="git rebase --continue"
+alias grba="git rebase --abort"
+alias grbs="git rebase --skip"
 
 # Docker
 alias dk="docker kill `docker ps | awk '{print $1}' | tail -n +2`"
@@ -103,3 +117,4 @@ alias srcenv="source env/bin/activate"
 # Node
 #alias npm="nvm exec 8.0.0 npm"
 #alias node="nvm exec 8.0.0"
+alias gmat="wine ~/.wine/drive_c/Program\ Files\ \(x86\)/GMATPrep2012/GMATPrep.exe"

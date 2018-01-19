@@ -14,13 +14,13 @@ Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'KeitaNakamura/neodark.vim'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'flazz/vim-colorschemes'
 Plug 'dracula/vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/goyo.vim'
-Plug 'tpope/vim-sleuth'
+"Plug 'tpope/vim-sleuth'
 Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
@@ -54,7 +54,7 @@ syntax enable
 set clipboard=unnamedplus
 set termguicolors
 
-color gruvbox
+colorscheme gruvbox
 
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_italic = 1
@@ -66,9 +66,6 @@ set background=dark
 set t_Co=256
 set encoding=utf-8
 
-"set tabstop=4 softtabstop=0 expandtab shiftwidth=4
-"set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
-set tabstop=4 shiftwidth=4
 set listchars=tab:➢\ ,trail:~,extends:>,precedes:<
 "set smarttab
 set title
@@ -82,6 +79,10 @@ set encoding=utf8
 set wildmenu
 set number
 set showmatch
+set tabstop=4 shiftwidth=4
+
+" The ultimate setting
+set hidden
 
 "set list
 
@@ -143,7 +144,25 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_exit_from_insert_mode=0
 let g:multi_cursor_exit_from_visual_mode=0
 
-map <leader>e :bp<bar>sp<bar>bn<bar>bd<CR>.
+map <leader>e :bp<bar>sp<bar>bn<bar>bd<CR>
+function DeleteHiddenBuffers() " Vim with the 'hidden' option
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+        silent execute 'bwipeout' buf
+    endfor
+endfunction
+command! BB call DeleteHiddenBuffers()
+nnoremap <Leader>bb :call DeleteHiddenBuffers()<CR>
+
+"map <C-I> :pyf /usr/share/clang/clang-format.py<cr>
+"imap <C-I> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+
+function FormatFile()
+    let l:lines="all"
+    pyf /usr/share/clang/clang-format.py
+endfunction
+nnoremap <Leader>cf :call FormatFile()<CR>
 
 let g:airline_left_sep=""
 let g:airline_left_alt_sep=""

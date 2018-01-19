@@ -71,13 +71,13 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 2
 
-font-0 = "Iosevka:size=18;2"
-font-1 = "FontAwesome:size=20;2"
-font-2 = "Ubuntu:size=18;2"
+font-0 = "Iosevka:size=16;2"
+font-1 = "FontAwesome:size=17;2"
+font-2 = "Ubuntu:size=16;2"
 
-modules-left = i3 mpd xwindow
-; modules-center =
-modules-right = xbacklight volume aux bitcoin cpu battery power clock
+modules-left = i3 xwindow
+modules-center = music
+modules-right = wireless xbacklight volume cpu battery power clock
 
 tray-position = right
 tray-transparent = false
@@ -120,6 +120,18 @@ format-underline = #FB4934
 format-overline = #FB4934
 label = %output%
 
+[module/cmus]
+type = custom/script
+exec = cmus.sh
+interval = 1
+format = <label>
+format-padding = 1
+;format-background = #CC241D
+;format-foreground = #f9f5d7
+;format-underline = #FB4934
+;format-overline = #FB4934
+label = %output%
+
 [module/bitcoin]
 type = custom/script
 exec = bitcoin
@@ -132,9 +144,67 @@ format-underline = #ffb06f
 format-overline = #ffb06f
 label =  %output%
 
+[module/wireless]
+type = internal/network
+interface = wlp1s0
+interval = 3
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+format-disconnected-underline = ${self.format-connected-underline}
+format-packetloss = <animation-packetloss> <label-connected>
+
+label-connected = %essid% %downspeed:9%
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-2 = 
+;ramp-signal-3 = 
+;ramp-signal-4 = 
+;ramp-signal-foreground = ${colors.foreground-alt}
+
+; Only applies if <ramp-signal> is used
+; ramp-signal-0 = ░░░░░
+; ramp-signal-1 = █░░░░
+; ramp-signal-2 = ▓█░░░
+; ramp-signal-3 = ▓▓█░░
+; ramp-signal-4 = ▓▓▓█░
+; ramp-signal-5 = ▓▓▓▓█
+;▁▂▃▄▅▆▇█
+;▁▁▁▁▁▁▁
+ramp-signal-font = 3
+ramp-signal-0 = ▁▁▁▁▁▁▁▁
+ramp-signal-1 = ▁▂▁▁▁▁▁▁
+ramp-signal-2 = ▁▂▃▁▁▁▁▁
+ramp-signal-3 = ▁▂▃▄▁▁▁▁
+ramp-signal-4 = ▁▂▃▄▅▁▁▁
+ramp-signal-5 = ▁▂▃▄▅▆▁▁
+ramp-signal-6 = ▁▂▃▄▅▆▇▁
+ramp-signal-7 = ▁▂▃▄▅▆▇█
+; ramp-signal-0 = ▁
+; ramp-signal-1 = ▂
+; ramp-signal-2 = ▃
+; ramp-signal-3 = ▄
+; ramp-signal-4 = ▅
+; ramp-signal-5 = ▆
+; ramp-signal-6 = ▇
+; ramp-signal-7 = █
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = ░
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = ▒:signal_strength:
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
+
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:50:...%
+label = %title:0:30:...%
 label-font=0
 
 [module/xkeyboard]
@@ -209,7 +279,7 @@ ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
 ws-icon-8 = 9;
-ws-icon-9 = 10;
+ws-icon-9 = 10;♪
 
 [module/mpd]
 type = internal/mpd
@@ -499,10 +569,12 @@ margin-bottom = 5
 
 [module/music]
 type = custom/script
-exec = [[ $(playerctl-cmus status) && ! $(playerctl-cmus status) =~ "stopped"  ]] && echo "  $(playerctl-cmus metadata title)" || echo ""
+exec = [[ $(playerctl-cmus status) && ! $(playerctl-cmus status) =~ "stopped"  ]] && echo "  $(playerctl-cmus metadata artist) - $(playerctl-cmus metadata title)"|| echo ""
 tail = true
 interval = 1
-format-underline = ${colors.foreground}
+format-padding = 1
+;format-background = #fe8019
+format-foreground = #f9f5d7
 
 [module/menu-apps]
 type = custom/menu
