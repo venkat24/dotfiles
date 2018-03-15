@@ -20,7 +20,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'dracula/vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/goyo.vim'
-"Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'
 Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
@@ -29,6 +29,8 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'majutsushi/tagbar'
 Plug 'justinmk/vim-sneak'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'junegunn/vim-emoji'
+Plug 'rafi/awesome-vim-colorschemes'
 "Plug 'Rip-Rip/clang_complete'
 "Plug 'sjl/gundo.vim'
 "Plug 'vim-scripts/DoxygenToolkit.vim'
@@ -51,7 +53,6 @@ set completefunc=autoprogramming#complete
 
 filetype plugin indent on
 syntax enable
-set clipboard=unnamedplus
 set termguicolors
 
 colorscheme gruvbox

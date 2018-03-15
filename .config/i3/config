@@ -7,8 +7,10 @@ floating_modifier $mod
 
 # quick start applications
 bindsym $mod+Return exec termite
-bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.5
 bindsym $mod+c exec code --force-device-scale-factor=1.5
+bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.5
+#bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1
+#bindsym $mod+c exec code --force-device-scale-factor=1
 bindsym $mod+u exec spotify --force-device-scale-factor=1.5
 bindsym $mod+t exec thunar
 bindsym $mod+b exec subl3
@@ -64,16 +66,16 @@ bindsym $mod+a focus parent
 # bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace 1 
+bindsym $mod+2 workspace 2 
+bindsym $mod+3 workspace 3 
+bindsym $mod+4 workspace 4 
+bindsym $mod+5 workspace 5 
+bindsym $mod+6 workspace 6 
+bindsym $mod+7 workspace 7 
+bindsym $mod+8 workspace 8 
+bindsym $mod+9 workspace 9 
+bindsym $mod+0 workspace 10 
 
 # move between adjacent workspaces
 bindsym $mod+Control+Left workspace prev
@@ -104,20 +106,21 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 7
 bindsym XF86MonBrightnessDown exec xbacklight -dec 7
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+# Shit never works
+#bindsym XF86AudioPlay exec playerctl play
+#bindsym XF86AudioPause exec playerctl pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
 
 # Set Wallpaper
-exec_always feh --bg-scale ~/Desktop/Wallpapers/metallica.jpg
+exec_always feh --bg-scale ~/Desktop/Wallpapers/liverpool2.png
 exec_always compton
 exec polybar example
 
 # reloads
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit, you fucking moron?' -b 'Yes, you stupid prick' -b 'No, now fuck off'"
 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode

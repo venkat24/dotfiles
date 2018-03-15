@@ -7,18 +7,17 @@ alias sonic="cd ~/bin/NITT-SonicWall-Login/ && python SonicWall_Login.py"
 alias fucking="sudo"
 alias vi="vim"
 alias vim="nvim"
-alias bim="vim"
 alias emacsc="emacsclient -c"
 alias trx="tar xvf"
 alias sonic="cd ~/bin/NITT-SonicWall-Login/ && python SonicWall_Login.py"
-alias vscode="/bin/code"
-alias fucking="sudo"
+alias vscode="/bin/code --force-device-scale-factor=1.5"
 alias y="yaourt"
 alias ys="yaourt -S"
 alias firefox="~/Downloads/firefox/firefox"
 
 # Typos
 alias cim="vim"
+alias bim="vim"
 alias pytohn="python"
 
 # Locations
@@ -60,6 +59,7 @@ alias gpu="git push upstream HEAD"
 alias gpom="git push origin master"
 alias gpum="git push upstream master"
 
+alias gfetch="git fetch"
 alias gpl="git pull"
 alias gplo="git pull origin "
 alias gplu="git pull upstream "
@@ -102,7 +102,7 @@ alias dk="docker kill `docker ps | awk '{print $1}' | tail -n +2`"
 
 # PHP and Laravel
 alias pa="php artisan"
-alias pas="php artisan serve"
+alias pas="php artisan serve --host=0.0.0.0"
 alias pat="php artisan tinker"
 alias cu="composer update"
 alias ci="composer install"

@@ -11,6 +11,7 @@ xinput disable "ELAN Touchscreen"
 export VISUAL='nvim'
 export EDITOR=$VISUAL
 export PAGER='less'
+export BROWSER=google-chrome-stable
 
 export GDK_SCALE=1.5
 
@@ -33,5 +34,5 @@ export TERM=xterm
 export QT_STYLE_OVERRIDE=breeze
 
 # Open Commands
-echo "To Do :"
-task list
+#echo "To Do :"
+#task list
