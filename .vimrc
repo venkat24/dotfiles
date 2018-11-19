@@ -5,11 +5,12 @@ autocmd VimEnter * echo "Welcome, Venkat!"
 
 call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'morhetz/gruvbox'
 Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
+Plug 'joshdick/onedark.vim'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -31,44 +32,39 @@ Plug 'justinmk/vim-sneak'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'junegunn/vim-emoji'
 Plug 'rafi/awesome-vim-colorschemes'
-"Plug 'Rip-Rip/clang_complete'
-"Plug 'sjl/gundo.vim'
-"Plug 'vim-scripts/DoxygenToolkit.vim'
-"Plug 'hail2u/vim-css3-syntax'
-"Plug 'SirVer/ultisnips'
-"Plug 'chrisbra/csv.vim'
-"Plug 'mattn/emmet-vim', { 'for': ['php','html'] }
-"Plug 'scrooloose/syntastic'
-"Plug 'tomlion/vim-solidity'
-"Plug 'chriskempson/base16-vim'
-"Plug 'raichoo/haskell-vim'
-"Plug 'mxw/vim-jsx'
-"Plug 'wakatime/vim-wakatime'
+Plug 'ryanoasis/vim-devicons'
+Plug 'gabrielelana/vim-markdown'
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
 call plug#end()
 
 set completefunc=autoprogramming#complete
+let b:SuperTabDisabled=1
 
 filetype plugin indent on
-syntax enable
-set termguicolors
+syntax on
+if (empty($TMUX))
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 
-colorscheme gruvbox
+colorscheme onedark
 
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_italic = 1
 
-let g:deoplete#enable_at_startup = 0
+let g:ycm_autoclose_preview_window_after_completion=1
 
 let base16colorspace=256
 set background=dark
 set t_Co=256
-set encoding=utf-8
 
 set listchars=tab:➢\ ,trail:~,extends:>,precedes:<
-"set smarttab
 set title
 set autoindent
 set smartindent
@@ -76,7 +72,9 @@ set backspace=indent,eol,start
 set hlsearch
 set ruler
 set incsearch
-set encoding=utf8
+set encoding=UTF-8
+
+
 set wildmenu
 set number
 set showmatch
@@ -105,8 +103,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 let g:table_mode_corner='|'
 
-"noremap <silent> <C-k> :call <SID>swap_up()<CR>
-"noremap <silent> <C-j> :call <SID>swap_down()<CR>
 noremap <silent> <C-up> :call <SID>swap_up()<CR>
 noremap <silent> <C-down> :call <SID>swap_down()<CR>
 
@@ -132,7 +128,7 @@ map <c-o> :NERDTreeToggle<CR>
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='gruvbox'
+let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 set ttimeoutlen=0
@@ -145,6 +141,12 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_exit_from_insert_mode=0
 let g:multi_cursor_exit_from_visual_mode=0
 
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
 map <leader>e :bp<bar>sp<bar>bn<bar>bd<CR>
 function DeleteHiddenBuffers() " Vim with the 'hidden' option
     let tpbl=[]
@@ -156,52 +158,11 @@ endfunction
 command! BB call DeleteHiddenBuffers()
 nnoremap <Leader>bb :call DeleteHiddenBuffers()<CR>
 
-"map <C-I> :pyf /usr/share/clang/clang-format.py<cr>
-"imap <C-I> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
-
 function FormatFile()
     let l:lines="all"
     pyf /usr/share/clang/clang-format.py
 endfunction
 nnoremap <Leader>cf :call FormatFile()<CR>
-
-let g:airline_left_sep=""
-let g:airline_left_alt_sep=""
-let g:airline_right_sep=""
-let g:airline_right_alt_sep=""
-if !exists('g:airline_symbols')
-    " Symbols for Unicode terminals
-    if &encoding==?'utf-8'
-        let g:airline_symbols= {
-                    \ 'paste': 'PASTE',
-                    \ 'spell': 'SPELL',
-                    \ 'readonly': "\u229D",
-                    \ 'whitespace': "\u2632",
-                    \ 'linenr': "\u2630",
-                    \ 'maxlinenr': "\u33D1",
-                    \ 'branch': "\u16A0",
-                    \ 'notexists': "\u0246",
-                    \ 'modified': '+',
-                    \ 'space': ' ',
-                    \ 'crypt': "\xf0\x9f\x94\x92",
-                    \}
-    else
-        " Symbols for ASCII terminals
-        let g:airline_symbols={
-                    \ 'paste': 'PASTE',
-                    \ 'spell': 'SPELL',
-                    \ 'readonly': 'RO',
-                    \ 'whitespace': '!',
-                    \ 'linenr': 'ln',
-                    \ 'maxlinenr': ':',
-                    \ 'branch': '',
-                    \ 'notexists': '?',
-                    \ 'modified': '+',
-                    \ 'space': ' ',
-                    \ 'crypt': 'cr',
-                    \ }
-    endif
-endif
 
 function! s:swap_lines(n1, n2)
     let line1 = getline(a:n1)
