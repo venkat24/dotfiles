@@ -85,6 +85,7 @@ alias gch="git checkout"
 alias gchb="git checkout -b"
 
 alias gb="git branch"
+alias gba="git branch --all"
 alias gcherry="git cherry-pick"
 
 alias gr="git remote"

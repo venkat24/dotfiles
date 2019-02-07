@@ -2,16 +2,15 @@
 
 # base and fonts
 set $mod Mod1
-font pango:Iosevka Term Slab 8
+font pango:Iosevka Term 16
 floating_modifier $mod
 
 # quick start applications
 bindsym $mod+Return exec termite
-bindsym $mod+c exec code --force-device-scale-factor=1.5
-bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.5
+bindsym $mod+c exec code --force-device-scale-factor=1.25
+bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.25
 #bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1
 #bindsym $mod+c exec code --force-device-scale-factor=1
-bindsym $mod+u exec spotify --force-device-scale-factor=1.5
 bindsym $mod+t exec thunar
 bindsym $mod+b exec subl3
 bindsym $mod+y exec okular
@@ -21,7 +20,7 @@ bindsym $mod+space exec dmenu_run
 bindsym $mod+Shift+w kill
 
 # lock i3
-bindsym $mod+Shift+x exec lock
+bindsym $mod+Shift+x exec /home/venkat/bin/scripts/lock
 
 # change focus
 bindsym $mod+j focus left
@@ -42,6 +41,18 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# move focussed window between monitors
+bindsym $mod+Shift+Mod4+Up move container to output up
+bindsym $mod+Shift+Mod4+Down move container to output down
+bindsym $mod+Shift+Mod4+Left move container to output left
+bindsym $mod+Shift+Mod4+Right move container to output right
+
+# move current workspace between monitors
+#bindsym $mod+Ctrl+x+Up move container to output up
+#bindsym $mod+Ctrl+x+Down move container to output down
+#bindsym $mod+Ctrl+x+Left move container to output left
+#bindsym $mod+Ctrl+x+Right move container to output right
 
 # splits
 bindsym $mod+v split v
@@ -66,21 +77,22 @@ bindsym $mod+a focus parent
 # bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1 
-bindsym $mod+2 workspace 2 
-bindsym $mod+3 workspace 3 
-bindsym $mod+4 workspace 4 
-bindsym $mod+5 workspace 5 
-bindsym $mod+6 workspace 6 
-bindsym $mod+7 workspace 7 
-bindsym $mod+8 workspace 8 
-bindsym $mod+9 workspace 9 
-bindsym $mod+0 workspace 10 
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 # move between adjacent workspaces
 bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
 bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -115,7 +127,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 7
 # Set Wallpaper
 exec_always feh --bg-scale ~/Desktop/Wallpapers/daftpunk.png
 exec_always compton
-exec polybar example
+#exec polybar example
 
 # reloads
 bindsym $mod+Shift+c reload
@@ -157,26 +169,32 @@ bindsym $mod+Shift+o   gaps outer current minus 5
 bindsym $mod+Shift+p   gaps outer current plus 5
 
 # Borders
-for_window [class="^.*"] border pixel 5
- smart_borders on
+for_window [class="^.*"] border pixel 3
+smart_borders on
 
-client.focused          #3c3836 #3c3836 #504945 #504945
-client.focused_inactive #333333 #333333 #555555 #555555
-client.unfocused        #333333 #333333 #555555 #555555
+#client.focused          #3c3836 #3c3836 #504945 #504945
+#client.focused_inactive #333333 #333333 #555555 #555555
+#client.unfocused        #333333 #333333 #555555 #555555
+#client.urgent           #ff5555 #ff5555 #ff5555 #ff5555
+
+client.focused          #222222 #222222 #272727 #272727
+client.focused_inactive #111111 #111111 #222222 #222222
+client.unfocused        #111111 #111111 #222222 #222222
 client.urgent           #ff5555 #ff5555 #ff5555 #ff5555
 
 # Let the GMAT dropdown thing always float
 for_window [class="Wine"] floating enable
 for_window [class="gmatprep.exe"] floating enable
+for_window [class="tvp"] floating enable
+for_window [class="Welcome to TVP"] floating enable
 
-# Replaced by polybar
-#bar {
-        #mode hide
+ #Replaced by polybar
+bar {
+        position top
+        status_command i3status
         #hidden_state hide
         #modifier Mod4
-        #position top
-        #status_command i3status
-#}
+}
 
 # disable window titles
 # new_window none

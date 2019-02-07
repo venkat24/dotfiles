@@ -34,6 +34,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gabrielelana/vim-markdown'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
@@ -53,7 +54,7 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme onedark
+colorscheme molokai
 
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_italic = 1
@@ -219,14 +220,14 @@ com! DM call DistractionFreeModeDisable()
 
 func! DayMode()
     color base16-gruvbox-light-hard
-    AirlineTheme gruvbox
-    let g:airline_theme='gruvbox'
+    AirlineTheme molokai
+    let g:airline_theme='molokai'
 endfu
 com! Day call DayMode()
 
 func! NightMode()
-    color gruvbox
-    AirlineTheme gruvbox
+    color molokai
+    AirlineTheme molokai
 endfu
 com! Night call NightMode()
 
