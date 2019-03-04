@@ -54,7 +54,7 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme molokai
+colorscheme onedark
 
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_italic = 1
