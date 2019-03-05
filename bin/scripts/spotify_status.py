@@ -4,6 +4,26 @@ import sys
 import dbus
 import argparse
 
+import requests
+import subprocess
+
+from bs4 import BeautifulSoup as bs
+
+def handleYoutube():
+    command = """strings ~/.config/google-chrome/Default/Current\ Session | 'grep' -oP '\K^https?://www.youtube.com/watch\?v=\w+' | tail -n 1"""
+
+    command_run = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
+
+    url = command_run.stdout.decode('utf-8').strip()
+    youtube_page = requests.get(url)
+
+    soup = bs(youtube_page.text, 'html.parser')
+
+    title = soup.find('title').text
+
+    pruned_title = title.split("- YouTube")[0]
+
+    print(pruned_title)
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -94,6 +114,10 @@ try:
 
     if play_pause_font:
         play_pause = label_with_font.format(font=play_pause_font, label=play_pause)
+
+    if status == 'Paused':
+        handleYoutube();
+        exit(0)
 
     # Handle main label
 
