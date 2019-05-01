@@ -35,6 +35,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gabrielelana/vim-markdown'
 Plug 'kristijanhusak/vim-carbon-now-sh'
+Plug 'altercation/vim-colors-solarized'
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
@@ -54,16 +55,14 @@ if (empty($TMUX))
   endif
 endif
 
-colorscheme onedark
-
-let g:gruvbox_contrast_dark = 'medium'
-let g:gruvbox_italic = 1
+"let g:gruvbox_contrast_dark = 'medium'
+"let g:gruvbox_italic = 1
 
 let g:ycm_autoclose_preview_window_after_completion=1
 
-let base16colorspace=256
+"let base16colorspace=256
 set background=dark
-set t_Co=256
+"set t_Co=256
 
 set listchars=tab:➢\ ,trail:~,extends:>,precedes:<
 set title
@@ -75,23 +74,14 @@ set ruler
 set incsearch
 set encoding=UTF-8
 
-
 set wildmenu
 set number
 set showmatch
 set tabstop=4 shiftwidth=4
 
-" The ultimate setting
 set hidden
-
-"set list
-
-"set cursorline
-
 set splitbelow
 set splitright
-"
-"highlight CursorLine cterm=bold ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set nobackup
 set nowb
 set noswapfile
@@ -129,7 +119,7 @@ map <c-o> :NERDTreeToggle<CR>
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='onedark'
+let g:airline_theme='solarized_flood'
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 set ttimeoutlen=0
@@ -257,3 +247,5 @@ nnoremap <Leader>s :call UnCheck()<CR>
 
 nnoremap <Leader>w :bn<CR>
 nnoremap <Leader>q :bp<CR>
+
+colorscheme solarized8_flat

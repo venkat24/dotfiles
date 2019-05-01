@@ -35,6 +35,7 @@ alias g="git"
 
 alias gcl="git clone"
 alias gclr="git clone --recursive"
+alias gcld="git clone --depth 1"
 
 alias gs="git status"
 alias gdiff="git diff"

@@ -15,6 +15,10 @@ def handleYoutube():
     command_run = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
 
     url = command_run.stdout.decode('utf-8').strip()
+
+    if not url:
+        return
+
     youtube_page = requests.get(url)
 
     soup = bs(youtube_page.text, 'html.parser')

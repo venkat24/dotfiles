@@ -126,7 +126,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 7
 #bindsym XF86AudioPrev exec playerctl previous
 
 # Set Wallpaper
-exec_always feh --bg-scale ~/Desktop/Wallpapers/daftpunk.png
+exec_always feh --bg-scale ~/Desktop/Wallpapers/monsters.jpg
 exec_always compton
 #exec polybar example
 
@@ -161,7 +161,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Gaps
-gaps inner 0
+gaps inner 10
 gaps outer 0
 
 bindsym $mod+o         gaps inner current minus 5
@@ -170,13 +170,13 @@ bindsym $mod+Shift+o   gaps outer current minus 5
 bindsym $mod+Shift+p   gaps outer current plus 5
 
 # Borders
-for_window [class="^.*"] border pixel 0
-smart_borders on
+for_window [class="^.*"] border pixel 6
+#smart_borders on
 
-#client.focused          #3c3836 #3c3836 #504945 #504945
-#client.focused_inactive #333333 #333333 #555555 #555555
-#client.unfocused        #333333 #333333 #555555 #555555
-#client.urgent           #ff5555 #ff5555 #ff5555 #ff5555
+client.focused          #073642 #073642 #504945 #504945
+client.focused_inactive #012934 #012934 #555555 #555555
+client.unfocused        #012934 #012934 #555555 #555555
+client.urgent           #ff5555 #ff5555 #ff5555 #ff5555
 
 #client.focused          #222222 #222222 #272727 #272727
 #client.focused_inactive #111111 #111111 #222222 #222222
