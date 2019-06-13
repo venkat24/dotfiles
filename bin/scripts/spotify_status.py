@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/python -W ignore
 
 import sys
 import dbus
@@ -144,7 +144,4 @@ try:
         print(output.format(artist=artist, song=song, play_pause=play_pause))
 
 except Exception as e:
-    if isinstance(e, dbus.exceptions.DBusException):
-        print('')
-    else:
-        print(e)
+    print("No Connection")

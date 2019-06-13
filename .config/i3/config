@@ -8,10 +8,9 @@ floating_modifier $mod
 # quick start applications
 bindsym $mod+Return exec termite
 bindsym $mod+c exec code --force-device-scale-factor=1.25
-bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1.25
+bindsym $mod+g exec firefox
+bindsym $mod+Shift+g exec google-chrome-stable --force-device-scale-factor=1.25
 bindsym $mod+u exec spotify --force-device-scale-factor=1.25
-#bindsym $mod+g exec google-chrome-stable --force-device-scale-factor=1
-#bindsym $mod+c exec code --force-device-scale-factor=1
 bindsym $mod+t exec thunar
 bindsym $mod+b exec subl3
 bindsym $mod+y exec okular
@@ -126,8 +125,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 7
 #bindsym XF86AudioPrev exec playerctl previous
 
 # Set Wallpaper
-exec_always feh --bg-scale ~/Desktop/Wallpapers/monsters.jpg
+exec_always feh --bg-scale ~/Desktop/Wallpapers/monsters3.jpg
 exec_always compton
+exec_always nm-applet
 #exec polybar example
 
 # reloads
@@ -161,7 +161,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Gaps
-gaps inner 10
+gaps inner 0
 gaps outer 0
 
 bindsym $mod+o         gaps inner current minus 5
@@ -171,13 +171,20 @@ bindsym $mod+Shift+p   gaps outer current plus 5
 
 # Borders
 for_window [class="^.*"] border pixel 6
-#smart_borders on
+smart_borders on
 
-client.focused          #073642 #073642 #504945 #504945
-client.focused_inactive #012934 #012934 #555555 #555555
-client.unfocused        #012934 #012934 #555555 #555555
+client.focused          #0a0f14 #0a0f14 #504945 #504945
+client.focused_inactive #050a0f #050a0f #555555 #555555
+client.unfocused        #050a0f #050a0f #555555 #555555
 client.urgent           #ff5555 #ff5555 #ff5555 #ff5555
 
+# Solarized
+#client.focused          #073642 #073642 #504945 #504945
+#client.focused_inactive #012934 #012934 #555555 #555555
+#client.unfocused        #012934 #012934 #555555 #555555
+#client.urgent           #ff5555 #ff5555 #ff5555 #ff5555
+
+# Gruvbox
 #client.focused          #222222 #222222 #272727 #272727
 #client.focused_inactive #111111 #111111 #222222 #222222
 #client.unfocused        #111111 #111111 #222222 #222222

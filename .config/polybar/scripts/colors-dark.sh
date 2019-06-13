@@ -6,8 +6,8 @@
 PDIR="$HOME/.config/polybar"
 LAUNCH="polybar-msg cmd restart"
 
-BG="#073642"
-FG="#EEE8D5"
+BG="#0a0f14"
+FG="#98d1ce"
  
 if  [[ $1 = "-amber" ]]; then
 # Replacing colors
@@ -163,6 +163,17 @@ sed -i -e "s/mf = .*/mf = $FG/g" $PDIR/colors.ini
 # Restarting polybar
 $LAUNCH &
 
+elif  [[ $1 = "-rosyred" ]]; then
+# Replacing colors
+sed -i -e "s/bg = .*/bg = $BG/g" $PDIR/colors.ini
+sed -i -e "s/fg = .*/fg = $FG/g" $PDIR/colors.ini
+sed -i -e "s/ac = .*/ac = #b32442/g" $PDIR/colors.ini
+sed -i -e "s/bi = .*/bi = #b32442/g" $PDIR/colors.ini
+sed -i -e "s/be = .*/be = #b32442/g" $PDIR/colors.ini
+sed -i -e "s/mf = .*/mf = $FG/g" $PDIR/colors.ini
+# Restarting polybar
+$LAUNCH &
+
 elif  [[ $1 = "-pink" ]]; then
 # Replacing colors
 sed -i -e "s/bg = .*/bg = $BG/g" $PDIR/colors.ini
@@ -224,5 +235,5 @@ echo "Available options:
 -cyan		-deep-orange		-deep-purple		-green
 -grey		-indigo			-light-blue		-light-green
 -lime		-orange			-pink			-purple
--red		-teal			-yellow"
+-red		-teal			-yellow                 -rosyred"
 fi

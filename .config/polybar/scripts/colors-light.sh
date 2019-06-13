@@ -196,6 +196,17 @@ sed -i -e "s/mf = .*/mf = $BG/g" $PDIR/colors.ini
 # Restarting polybar
 $LAUNCH &
 
+elif  [[ $1 = "-rosyred" ]]; then
+# Replacing colors
+sed -i -e "s/bg = .*/bg = $BG/g" $PDIR/colors.ini
+sed -i -e "s/fg = .*/fg = $FG/g" $PDIR/colors.ini
+sed -i -e "s/ac = .*/ac = #b22341/g" $PDIR/colors.ini
+sed -i -e "s/bi = .*/bi = #b22341/g" $PDIR/colors.ini
+sed -i -e "s/be = .*/be = #b22341/g" $PDIR/colors.ini
+sed -i -e "s/mf = .*/mf = $BG/g" $PDIR/colors.ini
+# Restarting polybar
+$LAUNCH &
+
 elif  [[ $1 = "-teal" ]]; then
 # Replacing colors
 sed -i -e "s/bg = .*/bg = $BG/g" $PDIR/colors.ini

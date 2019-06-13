@@ -112,6 +112,12 @@ alias pfr="pip freeze >! requirements.txt"
 alias pit="pip install --editable ."
 alias srcenv="source env/bin/activate"
 
+# Rust
+alias cb="cargo build"
+alias cbr="cargo build --release"
+alias cr="cargo run"
+alias crr="cargo run --release"
+
 # Node
 #alias npm="nvm exec 8.0.0 npm"
 #alias node="nvm exec 8.0.0"

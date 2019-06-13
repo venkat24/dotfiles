@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
 "Plug 'ervandew/supertab'
 Plug 'morhetz/gruvbox'
+Plug 'hzchirs/vim-material'
 Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
@@ -119,7 +120,6 @@ map <c-o> :NERDTreeToggle<CR>
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='solarized_flood'
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 set ttimeoutlen=0
@@ -210,14 +210,14 @@ com! DM call DistractionFreeModeDisable()
 
 func! DayMode()
     color base16-gruvbox-light-hard
-    AirlineTheme molokai
-    let g:airline_theme='molokai'
+    AirlineTheme gotham
+    let g:airline_theme='gotham'
 endfu
 com! Day call DayMode()
 
 func! NightMode()
-    color molokai
-    AirlineTheme molokai
+    color gotham
+    AirlineTheme gotham
 endfu
 com! Night call NightMode()
 
@@ -248,4 +248,6 @@ nnoremap <Leader>s :call UnCheck()<CR>
 nnoremap <Leader>w :bn<CR>
 nnoremap <Leader>q :bp<CR>
 
-colorscheme solarized8_flat
+let g:material_style='oceanic'
+colorscheme vim-material
+let g:airline_theme='material'
